@@ -1,0 +1,22 @@
+{
+    "token": "TOKEN",
+    "orgID": "YOUR organization",
+    
+    "email": "YOUR E-MAIL",
+    "password": "YOUR PASSWORD",
+    "log_path": "/login",
+
+    "work": "/organization/",
+    
+    "boards_path": "/boards/",
+    "board_name": "TEST",
+    
+    "list_path": "/lists",
+
+    "card_path": "/cards/",
+    "card_name": "Test-Card",
+    
+    "card_new": "NEW-Name",
+
+    "dummy_name": "DUMMY"
+}
