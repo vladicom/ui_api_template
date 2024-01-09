@@ -8,7 +8,7 @@ import allure
 from testdata.DataProvider import DataProvider
 from pages.authPage import AuthPage
 from pages.apiPage import ApiPage
-from pages.subForm import MyPage
+from pages.uiPage import MyPage
 from configurations.ConfigProvider import ConfigProvider
 
 @pytest.fixture(scope="session")

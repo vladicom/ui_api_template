@@ -12,7 +12,7 @@ class DataProvider:
         return self.data.get(prop)
     
     def getint(self, prop: str) -> int:
-        return self.data.get(int(prop))
+        return self.data.get(prop)
     
     def get_token(self):
         return self.data.get("token")
