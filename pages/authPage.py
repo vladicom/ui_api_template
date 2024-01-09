@@ -3,20 +3,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
-import pytest
-from configurations.ConfigProvider import ConfigProvider
-from testdata.DataProvider import DataProvider
 
 class AuthPage:
     
     def __init__(self, driver: WebDriver) -> None:
         self.__driver = driver
-        
-    def get_login(self):
+
+    @allure.step('*UI-Page: Open Webpage: {base_url}{log_path}')    
+    def get_login(self, base_url, log_path):
         """Open web-page"""
-        url = f"{ConfigProvider().ui_url()}{DataProvider().login()}"
-        with allure.step('*UI-Page: Open Webpage: {url}'):
-            self.__driver.get(url)
+        full_path = f"{base_url}{log_path}"
+        self.__driver.get(full_path)
 
     @allure.step('*UI-Page: Enter your Login(E-Mail): {locator} - {text}')
     def enter_email(self, locator, text):
