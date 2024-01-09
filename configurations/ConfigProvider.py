@@ -13,7 +13,7 @@ class ConfigProvider:
         return self.config[section].get(prop)
     
     def getint(self, section: str, prop: str):
-        return self.config[section].get(int(prop))
+        return self.config[section].get(prop)
     
     def ui_url(self):
         return self.config["ui"].get("base_url")
