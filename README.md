@@ -23,12 +23,12 @@ Dies ist eine Vorlage für die Python-Testautomatisierung, die UI- und API-Tests
 4. Fill files (test_data) with your test data
 5. Start tests:
    1. all tests
-   - ``python -m pytest``
-   - or ``py -m pytest``
+    - ``python -m pytest``
+    - or ``py -m pytest``
    2. Ui tests
-   - ``py -m pytest test\test_ui.py``
+    - ``py -m pytest test\test_ui.py``
    3. API tests
-   - ``py -m pytest test\test_api.py``
+    - ``py -m pytest test\test_api.py``
 6. For Test-report start:
    - ``allure serve allure-files``
 
