@@ -11,7 +11,7 @@ Dies ist eine Vorlage für die Python-Testautomatisierung, die UI- und API-Tests
 ---
 
 ### INSTRUCTION
-####1. Clone repository: 
+1. Clone repository: 
 ***command*** - `git clone https://github.com/vladicom/ui_api_template.git`
 2. Install libraries:
    - ``python install pip``
