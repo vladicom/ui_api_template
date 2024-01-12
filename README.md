@@ -1,6 +1,6 @@
 # ui_api_template
 
-## Test automation template (Python) ***ver. 1.0.24***
+## Test automation template (Python)
 
 This is a Python test automation template that includes UI and API tests, as well as class methods and configuration files. For example, the site [Trello.com](https://trello.com/) is taken. You can use the code to suit your needs by replacing the test data.
 
@@ -10,9 +10,41 @@ Dies ist eine Vorlage für die Python-Testautomatisierung, die UI- und API-Tests
 
 ---
 
-### Stack
+### INSTRUCTION
+1. Clone repository: 
+***command*** - `git clone https://github.com/vladicom/ui_api_template.git`
+2. Install libraries:
+   - ``python install pip``
+   - ``pip install pytest``
+   - ``pip install selenium``
+   - ``pip install webdriver-manager``
+   - ``pip install allure``
+3. Registration on the website [Trello.com](https://trello.com/)
+4. Fill files (test_data) with your test data
+5. Start tests:
+   1. all tests
+   - ``python -m pytest``
+   - or ``py -m pytest``
+   2. Ui tests
+   - ``py -m pytest test\test_ui.py``
+   3. API tests
+   - ``py -m pytest test\test_api.py``
+6. For Test-report start:
+   - ``allure serve allure-files``
+
+---
+
+### Stack:
 - pytest
 - selenium
 - request
 - allure
 - config
+
+### Structure:
+- ./test - testfiles
+- ./pages - page methods
+- ./configurations - configuration method
+- ./testdata - test-data method
+- test_config.ini - configuration file
+- test_data.json - file with your test-data
