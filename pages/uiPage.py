@@ -75,13 +75,11 @@ class MyPage():
     
     def load_item(self, locator):
         """Wait for the dinamic elements(page, new window, etc.) to load """
-        WebDriverWait(self.__driver, 10).until(
+        with allure.step('*UI-Page: Wait for the element to load'):
+            WebDriverWait(self.__driver, 10).until(
             EC.visibility_of_all_elements_located((By.XPATH, locator))
         )
-        with allure.step('*UI-Page: Wait for the element to load'):
-            return self.__driver.find_elements(By.XPATH, locator)
-
-            
+          
     def get_id(self, locator, value, attr):
         """Get a item ID with attribute"""
         items = self.__driver.find_elements(By.XPATH, locator)

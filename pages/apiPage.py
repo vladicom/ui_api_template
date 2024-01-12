@@ -90,4 +90,3 @@ class ApiPage:
         allure.attach(str(resp.request.url), 'PUT', allure.attachment_type.TEXT)
         allure.attach(str(resp.request.body), 'BODY', allure.attachment_type.JSON)
         return resp.json()
-

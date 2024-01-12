@@ -55,6 +55,7 @@ def ui_board_list(browser) -> dict:
 def get_add_ui_board(ui_page: MyPage) -> dict:
     new_board = ui_page
     with allure.step("Click on 'Create new board'"):
+        new_board.load_item(DataProvider().get("ui_board_list"))
         new_board.open_editor(DataProvider().get("ui_new_board"))
     with allure.step("Enter board name"):
         new_board.create_item(
@@ -72,9 +73,15 @@ def update_list(ui_page: MyPage) -> dict:
     with allure.step("Update item list"):
         return lst[1:]
 
+@pytest.fixture()
+def refresh_list(ui_page: MyPage) -> dict:
+    with allure.step("Refresh board list"):
+        ui_page.get_page(ConfigProvider().ui_url())
+
 @pytest.fixture
 def open_board(ui_page: MyPage, get_boards: list) -> MyPage:
     boards = ui_page
+    boards.load_item(DataProvider().get("ui_board_list"))
     board = get_boards[0]
     board_title = board.get("name")
     with allure.step(f"Open board {board_title}(click)"):
@@ -127,7 +134,8 @@ def delete_ui_card(ui_page: MyPage) -> dict:
     with allure.step("Click button 'Archive' in actions-menu"):
         new_card.open_editor(DataProvider().get("ui_archive_card"))
     with allure.step("Click button 'Delete' in actions-menu"):
-        new_card.open_editor(DataProvider().get("ui_delete_card"))       
+        new_card.open_editor(DataProvider().get("ui_delete_card"))
+        new_card.load_item(DataProvider().get("ui_close_edit"))       
     with allure.step("Click button 'Delete'"):
         new_card.submit(DataProvider().get("ui_close_edit"))
 
@@ -151,6 +159,7 @@ def move_ui_card(ui_page: MyPage) -> dict:
 def move_mouse_card(ui_page: MyPage) -> dict:
     card = ui_page
     card.open_editor(DataProvider().get("ui_card_menu"))
+    card.load_item(DataProvider().get("ui_card_header"))
     c_lst = card.get_item_list(DataProvider().get("ui_current_list"))[0]
     card.submit(DataProvider().get("ui_close_edit"))
     card.drag_and_drop_item(
@@ -158,6 +167,7 @@ def move_mouse_card(ui_page: MyPage) -> dict:
         DataProvider().get("drop_lists")
     )
     card.open_editor(DataProvider().get("ui_card_menu"))
+    card.load_item(DataProvider().get("ui_card_header"))
     n_lst = card.get_item_list(DataProvider().get("ui_current_list"))[0]
     card.submit(DataProvider().get("ui_close_edit"))
     return c_lst, n_lst

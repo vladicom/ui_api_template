@@ -20,27 +20,28 @@
 
     "dummy_name": "DUMMY",
 
-    "ui_board_list": "//ul/li[@class='boards-page-board-section-list-item']/a",
-    "ui_new_board": "//ul/li[@data-testid='create-board-tile']",
+    "ui_board_list": ".//ul//li//div[@class='board-tile-details-name']//div",
+    "ui_new_board": ".//ul/li[@data-testid='create-board-tile']",
     "ui_enter_board_name": "//input[@data-testid='create-board-title-input']",
     "ui_submit_board": "//button[@data-testid='create-board-submit-button']",
     "ui_board_content": "//div[@class='board-main-content']",
-    "ui_open_board": "//div[@class='board-tile-details-name']",
-    "ui_board_menu": "//div[@class='board-header u-clearfix js-board-header']//div//span[2]//button[2]//span//span",
-    "ui_close_board": "//a[contains(@class, 'js-close-board')]",
-    "ui_submit_close": "//input[contains(@type, 'submit')]",
-    "ui_delete_board": "//button[@data-testid='close-board-delete-board-button']",
-    "ui_submit_del_board": "//button[@data-testid='close-board-delete-board-confirm-button']",
+    "ui_open_board": ".//ul//li//div[@class='board-tile-details-name']//div",
+    "ui_board_menu": ".//div[@class='board-header u-clearfix js-board-header']//div//span[2]//button[2]//span//span",
+    "ui_close_board": ".//div//ul//li//a[contains(@class, 'js-close-board')]",
+    "ui_submit_close": ".//div//div//input[contains(@type, 'submit')]",
+    "ui_delete_board": "//div//div//button[@data-testid='close-board-delete-board-button']",
+    "ui_submit_del_board": "//div//div//button[@data-testid='close-board-delete-board-confirm-button']",
+
 
     "ui_add_card": "(//button[@data-testid='list-add-card-button'])[1]",
-    "ui_new_card": "//textarea[@data-testid='list-card-composer-textarea']",
-    "ui_submit_card": "//button[@data-testid='list-card-composer-add-card-button']",
+    "ui_new_card": "//form//textarea[@data-testid='list-card-composer-textarea']",
+    "ui_submit_card": "//form//button[@data-testid='list-card-composer-add-card-button']",
     "ui_card_list": "//li[@data-testid='list-card']",
-    "ui_card_list_id": "//div[@data-testid='trello-card']",
-    "ui_card_menu": "//a[@data-testid='card-name']",
-    "ui_edit_card": "//textarea[contains(@class, 'mod-card-back-title')]",
-    "ui_close_edit": "//a[contains(@class, 'js-close-window')]",
-    "ui_current_list": "//a[@class='js-open-move-from-header']",
+    "ui_card_list_id": ".//ol//li//div[@data-testid='trello-card']",
+    "ui_card_menu": ".//ol//li//div[@data-testid='trello-card']//a[@data-testid='card-name']",
+    "ui_edit_card": "//div//div//textarea[contains(@class, 'mod-card-back-title')]",
+    "ui_close_edit": "//div//a[contains(@class, 'js-close-window')]",
+    "ui_current_list": "//div//p//a[@class='js-open-move-from-header']",
     "ui_move_card": "//div[@class='window-sidebar']//div//div//a[@class='button-link js-move-card']",
     "ui_get_select": "//div[@class='pop-over-section']//select[@class='js-select-list']",
     "ui_select_list": "(//select/option[@value])[2]",
@@ -49,6 +50,8 @@
     "ui_delete_card": "//a[contains(@class, 'js-delete-card')]",
     "ui_submit_delete": "//input[contains(@type, 'submit')]",
     "dragg_card": "(//li[@data-testid='list-card' and @draggable='true'])[1]",
+    "ui_card_header": ".//div[@class='window-header-inline-content quiet js-current-list']",
 
     "drop_lists": "(//li[@data-testid='list-wrapper'])[2]"
+
 }
