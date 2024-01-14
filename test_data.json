@@ -37,7 +37,7 @@
     "ui_new_card": "//form//textarea[@data-testid='list-card-composer-textarea']",
     "ui_submit_card": "//form//button[@data-testid='list-card-composer-add-card-button']",
     "ui_card_list": "//li[@data-testid='list-card']",
-    "ui_card_list_id": ".//ol//li//div[@data-testid='trello-card']",
+    "ui_card": ".//ol//li//div[@data-testid='trello-card']",
     "ui_card_menu": ".//ol//li//div[@data-testid='trello-card']//a[@data-testid='card-name']",
     "ui_edit_card": "//div//div//textarea[contains(@class, 'mod-card-back-title')]",
     "ui_close_edit": "//div//a[contains(@class, 'js-close-window')]",
@@ -52,6 +52,5 @@
     "dragg_card": "(//li[@data-testid='list-card' and @draggable='true'])[1]",
     "ui_card_header": ".//div[@class='window-header-inline-content quiet js-current-list']",
 
-    "drop_lists": "(//li[@data-testid='list-wrapper'])[2]"
-
+    "drop_lists": "(//li[@data-testid='list-wrapper']//div[@data-testid='list'])[2]"
 }

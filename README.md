@@ -1,6 +1,6 @@
 # ui_api_template
 
-## Test automation template (Python)
+## Test automation template (Python) ***vers. 1.0.24.1(beta)***
 
 This is a Python test automation template that includes UI and API tests, as well as class methods and configuration files. For example, the site [Trello.com](https://trello.com/) is taken. You can use the code to suit your needs by replacing the test data.
 

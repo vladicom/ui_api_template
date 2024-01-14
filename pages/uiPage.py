@@ -38,22 +38,22 @@ class MyPage():
                 EC.element_to_be_clickable((By.XPATH, locator))
             ).click()
     
-    @allure.step('*UI-Page: Clear field')
     def edit_field(self, locator):
         """Clearing a field for enter value"""
-        WebDriverWait(self.__driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, locator))
-        ).clear()
+        with allure.step('*UI-Page: Clear field'):
+            WebDriverWait(self.__driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, locator))
+            ).clear()
     
-    @allure.step('*UI-Page: Enter Title for new item')
-    def create_item(self, locator, value):
+    def create_item(self, locator, item_title):
         """Creating an element with a name(value)"""
         WebDriverWait(self.__driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, locator))
-        ).send_keys(value)    
-        WebDriverWait(self.__driver, 10).until(
-            EC.text_to_be_present_in_element_value((By.XPATH, locator), value)
-        )
+        ).send_keys(item_title)
+        with allure.step(f'*UI-Page: Enter Title for new item {item_title}'):    
+            WebDriverWait(self.__driver, 10).until(
+                EC.text_to_be_present_in_element_value((By.XPATH, locator), item_title)
+            )
 
     def submit(self, locator):
         """Click or submit button"""
@@ -62,15 +62,15 @@ class MyPage():
                 EC.element_to_be_clickable((By.XPATH, locator))
             ).click()
     
-    def get_item(self, locator, value):
+    def get_item(self, locator, item_title):
         """Get to item with text == value"""
         WebDriverWait(self.__driver, 10).until(
             EC.presence_of_all_elements_located((By.XPATH, locator))
         )
         items = self.__driver.find_elements(By.XPATH, locator)
         for item in items:
-            if value in item.text:
-                with allure.step(f'*UI-Page: Get item with Title: {value}'):
+            if item_title in item.text:
+                with allure.step(f'*UI-Page: Get item with Title: {item_title}'):
                     item.click()
     
     def load_item(self, locator):
@@ -79,17 +79,18 @@ class MyPage():
             WebDriverWait(self.__driver, 10).until(
             EC.visibility_of_all_elements_located((By.XPATH, locator))
         )
-          
-    def get_id(self, locator, value, attr):
+
+            
+    def get_id(self, locator, item_title, attr):
         """Get a item ID with attribute"""
         items = self.__driver.find_elements(By.XPATH, locator)
         for item in items:
             item_id = item.get_attribute(f'{attr}')
             with allure.step('*UI-Page: Get ID for the element'):
-                if item.text == value:
+                if item.text == item_title:
                     return item_id
             allure.attach(
-            str(value, attr, item_id), 'Element ID', allure.attachment_type.TEXT
+            str(item_title, attr, item_id), 'Element ID', allure.attachment_type.TEXT
             )
         return None
             

@@ -15,25 +15,23 @@ class AuthPage:
         full_path = f"{base_url}{log_path}"
         self.__driver.get(full_path)
 
-    @allure.step('*UI-Page: Enter your Login(E-Mail): {locator} - {text}')
-    def enter_email(self, locator, text):
+    @allure.step('*UI-Page: Enter your Login(E-Mail): {locator} - {e_mail}')
+    def enter_email(self, locator, e_mail):
         """Enter Login(E-Mail)"""
-        field = self.__driver.find_element(By.ID, locator)
-        field.send_keys(text)
+        self.__driver.find_element(By.ID, locator).send_keys(e_mail)
 
     @allure.step('*UI-Page: Click button: {locator}')
     def submit_form(self, locator):
         """Submit Authorization"""
         self.__driver.find_element(By.ID, locator).submit()
 
-    @allure.step('*UI-Page: Enter your Password: {locator} - {text}')
-    def enter_password(self, locator, text):
+    @allure.step('*UI-Page: Enter your Password: {locator} - {password}')
+    def enter_password(self, locator, password):
         """Enter Password"""
         WebDriverWait(self.__driver, 10).until(
             EC.visibility_of_all_elements_located((By.ID, locator))
         )
-        field = self.__driver.find_element(By.ID, locator)
-        field.send_keys(text)
+        self.__driver.find_element(By.ID, locator).send_keys(password)
 
     def get_current_url(self):
         """Get current web-page"""
