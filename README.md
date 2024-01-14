@@ -31,6 +31,12 @@ Dies ist eine Vorlage für die Python-Testautomatisierung, die UI- und API-Tests
     - ``py -m pytest test\test_api.py``
 6. For Test-report start:
    - ``allure serve allure-files``
+  
+### Useful links:
+- [PYTEST -Full pytest documentation](https://docs.pytest.org/en/stable/contents.html)
+- [PyPi-for libraries](https://pypi.org)
+- [Selenium](https://www.selenium.dev/documentation/)
+- [Allure-Report](https://allurereport.org/)
 
 ---
 
