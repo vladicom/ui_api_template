@@ -7,8 +7,8 @@ class ApiPage:
         self.__token = token
         
     @allure.step('*API: Get item list')
-    def get_item_list(self, path) -> dict:
-        """Gettting a list of items(objects)""" 
+    def get_item_list(self, path, filter_param) -> dict:
+        """Gettting a list of items(objects) with filtering by key with value: False""" 
         full_path = f"{self.__url}{path}"
         with allure.step(f"Get url: {full_path} with method 'GET'"):
             cookie = {'token': self.__token}
@@ -17,7 +17,8 @@ class ApiPage:
         allure.attach(
             str(resp.request.url), 'GET', allure.attachment_type.TEXT
             )
-        return resp.json()
+        filtered_list = [item for item in resp.json() if not item.get(filter_param, True)]
+        return filtered_list
     
     @allure.step('*API: Get item')
     def get_item(self, path, item_id) -> dict:
