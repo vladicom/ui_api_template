@@ -10,10 +10,10 @@ from testdata.DataProvider import DataProvider
 @allure.suite("API tests")
 @allure.title("Test create a board")
 def test_add_board(api_client: ApiPage, board_path: str, board_body: dict, work_path: str):
-    list_before = api_client.get_item_list(work_path)
+    list_before = api_client.get_item_list(work_path, "closed")
     with allure.step("Create a Board"):
         resp = api_client.add_item(board_path, board_body)
-    list_after = api_client.get_item_list(work_path)
+    list_after = api_client.get_item_list(work_path, "closed")
     with allure.step("Delete test-board"):
         api_client.delete_item_by_id(board_path, resp.get("id"))
         
@@ -29,10 +29,10 @@ def test_add_board(api_client: ApiPage, board_path: str, board_body: dict, work_
 @allure.suite("API tests")
 @allure.title("Test delete board")
 def test_delete_board(api_client: ApiPage, add_dummy_api: str, board_path: str, work_path: str):
-    list_before = api_client.get_item_list(work_path)
+    list_before = api_client.get_item_list(work_path, "closed")
     with allure.step("Delete a Board"):
         api_client.delete_item_by_id(board_path, add_dummy_api)
-    list_after = api_client.get_item_list(work_path)
+    list_after = api_client.get_item_list(work_path, "closed")
     
     with allure.step("Board removal check"):
         assert len(list_before) - len(list_after) == 1
@@ -45,11 +45,11 @@ def test_delete_board(api_client: ApiPage, add_dummy_api: str, board_path: str, 
 @allure.title("Test create a card")
 def test_add_card(
     api_client: ApiPage, cards_path: str, get_lists: dict, card_path: str, body_card: dict):
-    list_before = api_client.get_item_list(cards_path)
+    list_before = api_client.get_item_list(cards_path, "closed")
     with allure.step("Create a Card"):
         body_card["idList"] = get_lists[0].get("id")
         card = api_client.add_item(card_path, body_card)
-    list_after = api_client.get_item_list(cards_path)
+    list_after = api_client.get_item_list(cards_path, "closed")
     
     with allure.step("Checking that the card has been added"):
         assert len(list_after) - len(list_before) == 1
@@ -96,10 +96,10 @@ def test_move_card(
 @allure.title("Test delete card")
 def test_delete_card(
         api_client: ApiPage, get_lists: dict, api_dummy_card: str, cards_path: str, card_path: str):
-    list_before = api_client.get_item_list(cards_path)
+    list_before = api_client.get_item_list(cards_path, "closed")
     with allure.step("Delete a Card"):    
         api_client.delete_item_by_id(card_path, api_dummy_card)
-    list_after = api_client.get_item_list(cards_path)
+    list_after = api_client.get_item_list(cards_path, "closed")
     
     with allure.step("Card removal check"):
         assert len(list_before) - len(list_after) == 1

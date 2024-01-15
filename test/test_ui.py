@@ -1,6 +1,6 @@
 import pytest
 from pages.apiPage import ApiPage
-from pages.subForm import MyPage
+from pages.uiPage import MyPage
 from testdata.DataProvider import DataProvider
 from configurations.ConfigProvider import ConfigProvider
 import allure
@@ -25,7 +25,7 @@ def test_add_board(log_in, ui_page: MyPage, api_client: ApiPage, work_path: str,
         list_after = ui_page.get_item_list(DataProvider().get("ui_board_list"))
         added_board = list_after[0]
     with allure.step("Delete board from Data Base"):
-        new_board = api_client.get_item_list(work_path)[0]
+        new_board = api_client.get_item_list(work_path, "closed")[0]
         api_client.delete_item_by_id(board_path, new_board.get("id"))
 
     with allure.step("Check of added board"):
