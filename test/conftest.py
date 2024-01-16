@@ -8,7 +8,7 @@ import allure
 from testdata.DataProvider import DataProvider
 from pages.authPage import AuthPage
 from pages.apiPage import ApiPage
-from pages.subForm import MyPage
+from pages.uiPage import MyPage
 from configurations.ConfigProvider import ConfigProvider
 
 @pytest.fixture(scope="session")
@@ -114,7 +114,7 @@ def lists_path(board_path, add_delete_board, list_path) -> str:
 @allure.step("Defining list ID")
 def get_lists(lists_path) -> dict:
     api = ApiPage(ConfigProvider().api_url(), DataProvider().get_token())
-    resp = api.get_item_list(lists_path)
+    resp = api.get_item_list(lists_path, "closed")
     return resp
 
 @pytest.fixture
@@ -164,7 +164,7 @@ def cards_path(board_path, add_delete_board, card_path) -> str:
 @pytest.fixture
 def get_cards(cards_path) -> dict:
     api = ApiPage(ConfigProvider().api_url(), DataProvider().get_token())
-    resp = api.get_item_list(cards_path)
+    resp = api.get_item_list(cards_path, "closed")
     return resp
 
 @pytest.fixture
